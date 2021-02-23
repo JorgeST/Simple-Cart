@@ -24,31 +24,12 @@ if ($page == 'cart') {
 		<i class="fa fa-info-circle"></i> There are no items in the cart.
 	</div>';
 
-    // Empty the cart
-    if (isset($_POST['empty'])) {
-        $cart->clear();
-    }
-
     // Add item
     if (isset($_POST['add'])) {
 
 
         $cart->add($_POST['name'],$_POST['price']);
 
-    }
-
-    // Update item
-    if (isset($_POST['update'])) {
-        foreach ($products as $product) {
-            if ($_POST['id'] == $product->id) {
-                break;
-            }
-        }
-
-        $cart->update($product->id, $_POST['qty'], [
-            'price' => $product->price,
-            'color' => (isset($_POST['color'])) ? $_POST['color'] : '',
-        ]);
     }
 
     // Remove item
